@@ -11,17 +11,17 @@
       {{ field }}
     {% else %}
       {% if field.errors %}{{ field.errors }}{% endif %}
-      <p{% if field.errors %} class="error"{% endif %}{% if field.name == "honeypot" %} style="display:none;"{% endif %}>
+      <span{% if field.errors %} class="error"{% endif %}{% if field.name == "honeypot" %} style="display:none;"{% endif %}>
 {#        {{ field.label_tag }} {{ field }}#}
         {% bootstrap_field field show_label=False %}
-      </p>
+      </span>
     {% endif %}
   {% endfor %}
-  <p class="submit">
-    <button type="submit" name="post" class="submit-post btn btn-primary" value="{% trans "Post" %}">
-        {% trans "Submit" %}
-    </button>
-  </p>
+    <span class="submit">
+        <button type="submit" name="post" class="submit-post btn btn-primary" value="{% trans "Post" %}">
+            {% trans "Submit" %}
+        </button>
+    </span>
 </form>
 {{ form.media }}
 <style>

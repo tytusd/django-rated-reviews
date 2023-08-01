@@ -83,7 +83,7 @@ msgstr "Opinie"
 
 #: reviews/forms.py:104 reviews/templates/reviews/form.html:34
 msgid "Select a rating"
-msgstr ""
+msgstr "Wybierz ocenę"
 
 #. Translators: 'Comment' is a noun here.
 #: reviews/forms.py:109
