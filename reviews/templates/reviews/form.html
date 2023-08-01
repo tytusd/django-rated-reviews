@@ -18,7 +18,9 @@
     {% endif %}
   {% endfor %}
   <p class="submit">
-    <button type="submit" name="post" class="submit-post btn btn-primary" value="{% trans "Post" %}">Submit</button>
+    <button type="submit" name="post" class="submit-post btn btn-primary" value="{% trans "Post" %}">
+        {% trans "Submit" %}
+    </button>
   </p>
 </form>
 {{ form.media }}

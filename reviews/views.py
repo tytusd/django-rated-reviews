@@ -51,25 +51,55 @@ def post_review(request, next=None, using=None):
     ctype = data.get("content_type")
     object_pk = data.get("object_pk")
     if ctype is None or object_pk is None:
-        return ReviewPostBadRequest("Missing content_type or object_pk field.")
+        messages.error(
+            request,
+            _(f"Something went wrong. Review wasn't submitted. Please contact administrator.")
+        )
+        # return ReviewPostBadRequest("Missing content_type or object_pk field.")
+        return next_redirect(request, fallback=next)
     try:
         model = apps.get_model(*ctype.split(".", 1))
         target = model._default_manager.using(using).get(pk=object_pk)
     except TypeError:
-        return ReviewPostBadRequest("Invalid content_type value: %r" % escape(ctype))
+        messages.error(
+            request,
+            _(f"Something went wrong. Review wasn't submitted. Please contact administrator.")
+        )
+        # return ReviewPostBadRequest("Invalid content_type value: %r" % escape(ctype))
+        return next_redirect(request, fallback=next)
     except AttributeError:
-        return ReviewPostBadRequest("The given content-type %r does not resolve to a valid model." % escape(ctype))
+        messages.error(
+            request,
+            _(f"Something went wrong. Review wasn't submitted. Please contact administrator.")
+        )
+        # return ReviewPostBadRequest("The given content-type %r does not resolve to a valid model." % escape(ctype))
+        return next_redirect(request, fallback=next)
     except ObjectDoesNotExist:
-        return ReviewPostBadRequest("No object matching content-type %r and object PK %r exists." % (escape(ctype), escape(object_pk)))
+        messages.error(
+            request,
+            _(f"Something went wrong. Review wasn't submitted. Please contact administrator.")
+        )
+        # return ReviewPostBadRequest("No object matching content-type %r and object PK %r exists." % (escape(ctype), escape(object_pk)))
+        return next_redirect(request, fallback=next)
     except (ValueError, ValidationError) as e:
-        return ReviewPostBadRequest("Attempting to get content-type %r and object PK %r exists raised %s" % (escape(ctype), escape(object_pk), e.__class__.__name__))
+        messages.error(
+            request,
+            _(f"Something went wrong. Review wasn't submitted. Please contact administrator.")
+        )
+        # return ReviewPostBadRequest("Attempting to get content-type %r and object PK %r exists raised %s" % (escape(ctype), escape(object_pk), e.__class__.__name__))
+        return next_redirect(request, fallback=next)
 
     # Construct the review form
     form = get_review_form()(target, data=data)
 
     # Check security information
     if form.security_errors():
-        return ReviewPostBadRequest("The comment form failed security verification: %s" % escape(str(form.security_errors())))
+        messages.error(
+            request,
+            _("The comment form failed security verification. The review wasn't submitted.")
+        )
+        # return ReviewPostBadRequest("The comment form failed security verification: %s" % escape(str(form.security_errors())))
+        return next_redirect(request, fallback=next)
 
     # If there are errors show the review
     if form.errors:
@@ -92,9 +122,20 @@ def post_review(request, next=None, using=None):
         try:
             review = form.get_review_model().objects.get(pk=form.cleaned_data["id"])
         except model.DoesNotExist:
-            return ReviewPostBadRequest("Referenced object gone")
+            messages.error(
+                request,
+                _("Something went wrong (\"Referenced object gone\"). "
+                  "Review wasn't submitted. Please contact administrator.")
+            )
+            # return ReviewPostBadRequest("Referenced object gone")
+            return next_redirect(request, fallback=next)
         if review.user != request.user:
-            return ReviewPostBadRequest("User spoofing")
+            messages.error(
+                request,
+                _("Spoofing detected - maybe you've posted a review already? The review wasn't submitted.")
+            )
+            # return ReviewPostBadRequest("User spoofing")
+            return next_redirect(request, fallback=next)
         form.update_review_object(review)
     else:
         # Otherwise create the review
