@@ -29,6 +29,6 @@ setuptools.setup(
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
     ],
-    install_requires=['Django>=1.11'],
+    install_requires=['Django>=1.11', 'django-bootstrap5>=23.3'],
     test_suite='tests.runtests.main'
 )

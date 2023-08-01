@@ -107,7 +107,7 @@ class ReviewDetailsForm(ReviewSecurityForm):
                                 required=True)
     # Translators: 'Comment' is a noun here.
     comment = forms.CharField(label=_('Comment'),
-                              widget=forms.Textarea(),
+                              widget=forms.Textarea(attrs={"rows": 5}),
                               max_length=REVIEW_MAX_LENGTH,
                               required=True)
 

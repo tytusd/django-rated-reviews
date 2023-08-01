@@ -8,6 +8,8 @@ from django.core.exceptions import ObjectDoesNotExist, ValidationError
 from django.shortcuts import render, resolve_url
 from django.template.loader import render_to_string
 from django.utils.html import escape
+from django.contrib import messages
+from django.utils.translation import gettext_lazy as _
 try:
     from django.utils.http import url_has_allowed_host_and_scheme
 except ImportError:
@@ -107,6 +109,10 @@ def post_review(request, next=None, using=None):
     review.save()
     signals.review_was_posted.send(sender=review.__class__, review=review, request=request)
 
+    messages.success(
+        request,
+        _("Review submitted successfully - thank you! It will be published once reviewed by the administrators.")
+    )
     return next_redirect(request, fallback=next or 'review-done', r=review._get_pk_val())
 
 

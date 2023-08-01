@@ -169,7 +169,7 @@ class ReviewFormNode(BaseReviewNode):
                         content_type=content_type,
                         object_pk=smart_str(obj.pk),
                         site__pk=site_id,
-                        user=context['request'].user
+                        user=context['request'].user.id
                     )
                     return get_form()(obj, initial=model_to_dict(review))
                 except self.review_model.DoesNotExist:
