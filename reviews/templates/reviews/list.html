@@ -4,7 +4,7 @@
   {% for review in review_list %}
     <dt id="r{{ review.id }}">
       {% render_rating_value review.rating %}
-      {{ review.submit_date }} - {{ review.user }}
+      {{ review.submit_date }}
     </dt>
     <dd>
       <p>{{ review.comment|linebreaks }}</p>

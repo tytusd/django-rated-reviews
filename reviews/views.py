@@ -154,7 +154,8 @@ def post_review(request, next=None, using=None):
         request,
         _("Review submitted successfully - thank you! It will be published once reviewed by the administrators.")
     )
-    return next_redirect(request, fallback=next or 'review-done', r=review._get_pk_val())
+    # return next_redirect(request, fallback=next or 'review-done', r=review._get_pk_val())
+    return next_redirect(request, fallback=next or 'review-done')
 
 
 def next_redirect(request, fallback, **get_kwargs):

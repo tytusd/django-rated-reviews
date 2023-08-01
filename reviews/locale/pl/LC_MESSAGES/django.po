@@ -1,0 +1,205 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-01 13:26+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && "
+"(n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && "
+"n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+
+#: reviews/__init__.py:12
+msgid "Terrible"
+msgstr "Okropne"
+
+#: reviews/__init__.py:13
+msgid "Poor"
+msgstr "Słabe"
+
+#: reviews/__init__.py:14
+msgid "Average"
+msgstr "Przeciętne"
+
+#: reviews/__init__.py:15
+msgid "Very Good"
+msgstr "Bardzo dobre"
+
+#: reviews/__init__.py:16
+msgid "Excellent"
+msgstr "Doskonałe"
+
+#: reviews/admin.py:30 reviews/forms.py:105
+msgid "Rating"
+msgstr "Ocena"
+
+#: reviews/admin.py:45 reviews/models.py:29
+msgid "rating"
+msgstr "ocena"
+
+#: reviews/admin.py:54
+msgid "link"
+msgstr ""
+
+#: reviews/admin.py:63
+msgid "Content"
+msgstr ""
+
+#: reviews/admin.py:67
+msgid "Metadata"
+msgstr ""
+
+#: reviews/admin.py:94
+msgid "approved"
+msgid_plural "approved"
+msgstr[0] ""
+msgstr[1] ""
+
+#: reviews/admin.py:96
+msgid "Approve selected reviews"
+msgstr ""
+
+#: reviews/admin.py:108
+#, python-format
+msgid "%(count)s review was successfully %(action)s."
+msgid_plural "%(count)s reviews were successfully %(action)s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: reviews/apps.py:7
+msgid "Reviews"
+msgstr "Opinie"
+
+#: reviews/forms.py:104 reviews/templates/reviews/form.html:34
+msgid "Select a rating"
+msgstr ""
+
+#. Translators: 'Comment' is a noun here.
+#: reviews/forms.py:109
+msgid "Comment"
+msgstr "Komentarz"
+
+#: reviews/forms.py:181
+#, python-format
+msgid "Rating should be between %(min)d and %(max)d"
+msgstr ""
+
+#: reviews/forms.py:194
+#, python-format
+msgid "Watch your mouth! The word %s is not allowed here."
+msgid_plural "Watch your mouth! The words %s are not allowed here."
+msgstr[0] ""
+msgstr[1] ""
+
+#: reviews/forms.py:198
+msgid "and"
+msgstr ""
+
+#: reviews/models.py:22
+msgid "content type"
+msgstr ""
+
+#: reviews/models.py:25
+msgid "object ID"
+msgstr ""
+
+#: reviews/models.py:28
+msgid "comment"
+msgstr "komentarz"
+
+#: reviews/models.py:30
+msgid "weight"
+msgstr ""
+
+#: reviews/models.py:46
+msgid "user"
+msgstr ""
+
+#: reviews/models.py:50
+msgid "submitted at"
+msgstr ""
+
+#: reviews/models.py:51
+msgid "IP address"
+msgstr "Adres IP"
+
+#: reviews/models.py:52
+msgid "is public"
+msgstr ""
+
+#: reviews/models.py:53
+msgid "Check this box to publish review on the site."
+msgstr ""
+
+#: reviews/models.py:61
+msgid "review"
+msgstr ""
+
+#: reviews/models.py:62
+msgid "reviews"
+msgstr ""
+
+#: reviews/models.py:68
+#, python-format
+msgid "%(user)s review of %(object)s"
+msgstr ""
+
+#: reviews/templates/reviews/form.html:21
+msgid "Post"
+msgstr ""
+
+#: reviews/templates/reviews/form.html:22
+msgid "Submit"
+msgstr "Wyślij"
+
+#: reviews/templates/reviews/posted.html:3
+#: reviews/templates/reviews/posted.html:6
+msgid "Thank you for your review"
+msgstr "Dziękujemy za Twoją opinię"
+
+#: reviews/templates/reviews/rating_average.html:17
+#, python-format
+msgid "%(review_count)s review"
+msgid_plural "%(review_count)s reviews"
+msgstr[0] ""
+msgstr[1] ""
+
+#: reviews/views.py:56 reviews/views.py:66 reviews/views.py:73
+#: reviews/views.py:80 reviews/views.py:87
+msgid ""
+"Something went wrong. Review wasn't submitted. Please contact administrator."
+msgstr "Coś poszło nie tak. Opinia nie została przesłana. Skontaktuj się z administratorem."
+
+#: reviews/views.py:99
+msgid ""
+"The comment form failed security verification. The review wasn't submitted."
+msgstr "Komentarz nie przeszedł weryfikacji bezpieczeństwa. Ocena nie została przesłana."
+
+#: reviews/views.py:127
+msgid ""
+"Something went wrong (\"Referenced object gone\"). Review wasn't submitted. "
+"Please contact administrator."
+msgstr "Coś poszło nie tak. Opinia nie została przesłana. Skontaktuj się z administratorem."
+
+#: reviews/views.py:135
+msgid ""
+"Spoofing detected - maybe you've posted a review already? The review wasn't "
+"submitted."
+msgstr "Wykryto spoofing - może oceniłeś już wcześniej ten produkt? Ocena nie została przesłana."
+
+#: reviews/views.py:155
+msgid ""
+"Review submitted successfully - thank you! It will be published once "
+"reviewed by the administrators."
+msgstr "Ocena została przesłana - dziękujemy! Zostanie ona opublikowana po moderacji przez administratorów."
