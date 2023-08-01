@@ -25,7 +25,7 @@ class BaseReviewAbstractModel(models.Model):
     object_pk = models.TextField(_('object ID'))
     content_object = GenericForeignKey(ct_field="content_type", fk_field="object_pk")
 
-    comment = models.TextField(_('comment'), max_length=REVIEW_MAX_LENGTH)
+    comment = models.TextField(_('comment'), max_length=REVIEW_MAX_LENGTH, blank=True)
     rating = models.PositiveSmallIntegerField(_('rating'))
     weight = models.PositiveSmallIntegerField(_('weight'), default=1)
 

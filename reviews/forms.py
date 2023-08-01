@@ -109,7 +109,7 @@ class ReviewDetailsForm(ReviewSecurityForm):
     comment = forms.CharField(label=_('Comment'),
                               widget=forms.Textarea(attrs={"rows": 5}),
                               max_length=REVIEW_MAX_LENGTH,
-                              required=True)
+                              required=False)
 
     class Media:
         minified = '' if settings.DEBUG else '.min'
