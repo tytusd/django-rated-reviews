@@ -69,14 +69,14 @@ class ReviewAdmin(admin.ModelAdmin):
         ),
     )
 
-    list_display = ('rating_text', 'content_type', 'object_pk', 'user', 'ip_address',
-                    'submit_date', 'is_public', 'link')
+    list_display = ('rating_text', 'comment', 'object_pk',
+                    'submit_date', 'is_public') # 'link'
     list_filter = ('submit_date', 'site', 'is_public', 'rating')
     date_hierarchy = 'submit_date'
     raw_id_fields = ('user',)
     search_fields = ('comment', UsernameSearch(), 'ip_address')
     actions = ['approve_reviews']
-    list_editable = ('is_public', )
+    list_editable = ('is_public', 'comment')
 
     def get_actions(self, request):
         actions = super().get_actions(request)
