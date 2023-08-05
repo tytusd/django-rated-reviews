@@ -165,12 +165,12 @@ class ReviewFormNode(BaseReviewNode):
                     site_id = get_current_site(context['request']).pk
                 try:
                     content_type = ContentType.objects.get_for_model(obj)
-                    review = self.review_model.objects.get(
+                    review = self.review_model.objects.filter(
                         content_type=content_type,
                         object_pk=smart_str(obj.pk),
                         site__pk=site_id,
                         user=context['request'].user.id
-                    )
+                    ).order_by('-submit_date').last()
                     return get_form()(obj, initial=model_to_dict(review))
                 except self.review_model.DoesNotExist:
                     pass
