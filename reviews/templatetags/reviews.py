@@ -167,12 +167,12 @@ class ReviewFormNode(BaseReviewNode):
                     if context['request'].user is None or context['request'].user.id is None:
                         return get_form()(obj)
                     content_type = ContentType.objects.get_for_model(obj)
-                    review = self.review_model.objects.filter(
+                    review = self.review_model.objects.get(
                         content_type=content_type,
                         object_pk=smart_str(obj.pk),
                         site__pk=site_id,
                         user=context['request'].user.id
-                    ).order_by('-submit_date').first()
+                    )
                     return get_form()(obj, initial=model_to_dict(review))
                 except self.review_model.DoesNotExist:
                     pass
