@@ -69,7 +69,7 @@ class ReviewAdmin(admin.ModelAdmin):
         ),
     )
 
-    list_display = ('rating_text', 'comment', 'object_pk',
+    list_display = ('rating_text', 'comment', 'object_pk', 'content_object',
                     'submit_date', 'is_public') # 'link'
     list_filter = ('submit_date', 'site', 'is_public', 'rating', 'object_pk')
     date_hierarchy = 'submit_date'
