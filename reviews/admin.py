@@ -65,7 +65,7 @@ class ReviewAdmin(admin.ModelAdmin):
         ),
         (
             _('Metadata'),
-            {'fields': ('submit_date', 'ip_address', 'is_public')}
+            {'fields': ('submit_date', 'ip_address', 'is_public', 'added_via_api')}
         ),
     )
 
