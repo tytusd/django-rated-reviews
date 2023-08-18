@@ -77,6 +77,7 @@ class ReviewAdmin(admin.ModelAdmin):
     search_fields = ('comment', UsernameSearch(), 'ip_address')
     actions = ['approve_reviews']
     list_editable = ('is_public', 'comment')
+    list_per_page = 15
 
     def get_actions(self, request):
         actions = super().get_actions(request)
