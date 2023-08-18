@@ -77,5 +77,7 @@ class Review(UserReviewAbstractModel):
     """
     A user review for some object.
     """
+    added_via_api = models.BooleanField(null=False, default=False)
+
     class Meta(UserReviewAbstractModel.Meta):
         pass
